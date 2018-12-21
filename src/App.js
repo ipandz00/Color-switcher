@@ -23,7 +23,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <ColorContainer />
+          <ColorContainer
+            text = {this.state.fieldText} 
+          />
           <input type="text" name="fieldText" value={this.state.fieldText} onChange={this.handleInputChange} />
           <a
             className="App-link"

@@ -54,6 +54,7 @@ export default class ColorContainer extends Component {
       <Color
         currentColor = {this.state.currentColor}
         handleClick = {this.handleClick}
+        text = {this.props.text}
       />
       )
   }
