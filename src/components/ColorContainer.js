@@ -7,9 +7,11 @@ export default class ColorContainer extends Component {
     super(props);
 
     this.state = {
-      currentColor: '000000',
-      colorArray: ['000000']
+      currentColor: '#000000',
+      colorArray: ['#000000']
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -20,7 +22,7 @@ export default class ColorContainer extends Component {
       .then((values) => {
         let colorArray = this.state.colorArray;
         let randInt = getRndInteger(0,1);
-        colorArray.push(values[randInt].new_color);
+        colorArray.push("#"+values[randInt].new_color);
         this.setState({colorArray: colorArray});
       });
   }
@@ -34,8 +36,23 @@ export default class ColorContainer extends Component {
       })
   }
 
+  handleClick(e) {
+    const { currentColor, colorArray } = this.state;
+
+    colorArray.forEach((item) => {
+      if(item !== currentColor) {
+        this.setState({currentColor: item});
+      }
+    });
+  }
+
   render() {
-    return <Color />
+    return (
+      <Color
+        currentColor = {this.state.currentColor}
+        handleClick = {this.handleClick}
+      />
+      )
   }
 }
 
