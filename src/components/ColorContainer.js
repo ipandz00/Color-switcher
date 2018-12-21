@@ -24,6 +24,9 @@ export default class ColorContainer extends Component {
         let randInt = getRndInteger(0,1);
         colorArray.push("#"+values[randInt].new_color);
         this.setState({colorArray: colorArray});
+      })
+      .catch((errors) => {
+        console.log(errors);
       });
   }
 
