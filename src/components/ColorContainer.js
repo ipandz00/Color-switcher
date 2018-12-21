@@ -9,8 +9,11 @@ export default class ColorContainer extends Component {
 
     this.state = {
       currentColor: '#000000',
-      colorArray: ['#000000']
+      availibleColors: ['#000000']
     };
+
+    this.colors = ['#000000'];
+
 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -21,10 +24,13 @@ export default class ColorContainer extends Component {
     
     Promise.all([firstColor, secondColor])
       .then((values) => {
-        let colorArray = this.state.colorArray;
+        let availibleColors = this.state.availibleColors;
         let randInt = getRndInteger(0,1);
-        colorArray.push("#"+values[randInt].new_color);
-        this.setState({colorArray: colorArray});
+        availibleColors.push("#"+values[randInt].new_color);
+        this.setState({availibleColors: availibleColors}); 
+        values.forEach((item) => {
+          this.colors.push("#" + item.new_color);
+        });
       })
       .catch((errors) => {
         console.log(errors);
@@ -41,9 +47,9 @@ export default class ColorContainer extends Component {
   }
 
   handleClick(e) {
-    const { currentColor, colorArray } = this.state;
+    const { currentColor, availibleColors } = this.state;
 
-    colorArray.forEach((item) => {
+    availibleColors.forEach((item) => {
       if(item !== currentColor) {
         this.setState({currentColor: item});
       }
