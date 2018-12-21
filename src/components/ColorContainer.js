@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Color from '../views/Color.js';
 import { getRndInteger } from '../utils/helper.js';
+import PropTypes from 'prop-types';
 
 export default class ColorContainer extends Component {
   constructor(props) {
@@ -59,4 +60,8 @@ export default class ColorContainer extends Component {
       )
   }
 }
+
+ColorContainer.propTypes = {
+  text: PropTypes.string
+};
 
