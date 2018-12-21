@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ColorContainer from './components/ColorContainer.js';
 
 class App extends Component {
   render() {
